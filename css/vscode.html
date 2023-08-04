@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSCode</title>
+    <style>
+        html, body {
+            background: rgb(24, 24, 24);
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: rgb(24, 24, 24);
+            border-bottom: 1px solid rgb(49, 49, 49);
+            display: flex;
+            justify-content: space-between;
+            color: #FFF;
+            padding: .5em;
+        }
+
+        .header > .search {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+
+        .search > div {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 1.5em;
+        }
+
+        .search input {
+            background: rgb(42, 42, 42);
+            border: rgb(67,69,71) solid 1px;
+            border-radius: .5em;
+            padding: .3em;
+            text-align: center;
+            font-size: .7em;
+            width: 500px;
+        }
+
+        .header-icons {
+            padding-inline-end: 2em;
+        }
+
+        .icon-group {
+            display: flex;
+            gap: 2em;
+            align-items: center;
+        }
+        
+        .icon-group > div {
+            width: 32px;
+            height: 32px;
+            background-color: rgb(141, 148, 157);
+            border-radius: 10em;
+        }
+
+        .icon-group > div.small {
+            width: 24px;
+            height: 24px;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .container > .numbers {
+            width: 4em;
+            background: rgb(31, 31, 31);
+            text-align: right;
+        }
+
+        main {
+            flex: 1;
+            background: rgb(31, 31, 31);
+        }
+
+        aside {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: .8em;
+            border-left: 2px solid rgb(33, 33, 33);
+        }
+
+        aside > .icon-group {
+            flex-direction: column;
+        }
+
+        pre {
+            color: rgb(119, 119, 119);
+            font-size: 2em;
+            padding-left: 1em;
+        }
+
+        .tag-name {
+            color: rgb(103, 154, 209);
+        }
+
+        .selector, .function {
+            color: rgb(210, 187, 133);
+        }
+
+        .brace {
+            color: rgb(249, 216, 73);
+        }
+
+        .rule {
+            color: rgb(170, 218, 250);
+        }
+
+        .parantheses {
+            color: rgb(204, 118, 209);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div></div>
+        <div class="search">
+            <div>&leftarrow;</div>
+            <div>&RightArrow;</div>
+            <div><input type="text" placeholder="Search"></div>
+        </div>
+        <div class="header-icons icon-group">
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="numbers">
+<pre>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre>
+        </div>
+        <main>
+<pre>
+&lt;<span class="tag-name">html</span>&gt;
+    &lt;<span class="tag-name">head</span>&gt;
+        &lt;<span class="tag-name">style</span>&gt;
+        <span class="selector">.tag-name</span> <span class="brace">{</span>
+            <span class="rule">color</span>: <span class="function">rgb</span><span class="parantheses">(</span>103, 154, 209<span class="parantheses">)</span>;
+        <span class="brace">}</span>
+        <span class="selector">.selector</span> <span class="brace">{</span>
+            <span class="rule">color</span>: <span class="function">rgb</span><span class="parantheses">(</span>218, 119, 209<span class="parantheses">)</span>;
+        <span class="brace">}</span>
+        &lt;/<span class="tag-name">style</span>&gt;
+    &lt;/<span class="tag-name">head</span>&gt;
+    
+    &lt;<span class="tag-name">body</span>&gt;
+        &lt;<span class="tag-name">div</span>&gt;
+        &lt;/<span class="tag-name">div</span>&gt;
+    &lt;/<span class="tag-name">body</span>&gt;
+&lt;/<span class="tag-name">html</span>&gt;
+</pre>
+        </main>
+        <aside>
+            <div class="icon-group">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="icon-group">
+                <div></div>
+                <div></div>
+            </div>
+        </aside>
+    </div>
+</body>
+</html>
