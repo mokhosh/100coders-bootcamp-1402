@@ -1,0 +1,96 @@
+:root {
+    --hue: 40;
+    --saturation: 80%;
+    --light: 70%;
+    
+    --primary: hsl(var(--hue), var(--saturation), var(--light));
+    --primary-transparent: hsla(var(--hue), var(--saturation), var(--light), .3);
+    --primary-light: hsl(var(--hue), var(--saturation), calc(var(--light) + 10%));
+    --primary-dark: hsl(var(--hue), var(--saturation), calc(var(--light) - 10%));
+
+    --text-color: hsl(var(--hue), var(--saturation), 30%);
+}
+
+body, input, button {
+    color: var(--text-color);
+    font-family: monospace;
+}
+
+.container {
+    max-width: 1024px;
+    margin-inline: auto;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+h2 {
+    text-transform: capitalize;
+    font-size: 1.7rem;
+    margin-top: 2rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    gap: .5rem;
+    font-size: 1.2rem;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+li:hover {
+    background-color: var(--primary-transparent);
+}
+
+#done > li {
+    text-decoration: line-through;
+    opacity: .5;
+}
+
+.form {
+    display: flex;
+    border-radius: 2rem;
+}
+
+.form:has(input:focus) {
+    box-shadow: 0 0 0 5px var(--primary-transparent);
+}
+
+.form input {
+    font-size: 1.5rem;
+    padding-inline: 1.5rem;
+    padding-block: .5rem;
+    border-color: var(--primary);
+    border-style: solid;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    flex: 1;
+}
+
+.form input:focus {
+    outline: none;
+}
+
+.form button {
+    font-size: 1.2rem;
+    padding-inline: 1rem;
+    background-color: var(--primary);
+    border-color: var(--primary);
+    border-style: solid;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border-left: 0;
+}
+
+.form button:hover {
+    background-color: var(--primary-dark);
+    cursor: pointer;
+}
