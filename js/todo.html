@@ -16,9 +16,21 @@
             <button id="button">Add Todo</button>
         </div>
 
-        <div id="wrapper"></div>
+        <div>
+            <h2>Undone</h2>
+            <ul id="undone"></ul>
+
+            <h2>Done</h2>
+            <ul id="done"></ul>
+        </div>
     </div>
 
+    <template>
+        <li>
+            <input type="checkbox">
+            <span></span>
+        </li>
+    </template>
     <script src="todo.js"></script>
 </body>
 </html>

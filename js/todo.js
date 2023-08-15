@@ -1,8 +1,9 @@
-const undone = JSON.parse(localStorage.getItem('undone')) ?? []
-const done = JSON.parse(localStorage.getItem('done')) ?? []
+const undone = JSON.parse(localStorage.undone) ?? []
+const done = JSON.parse(localStorage.done) ?? []
 
 const button = document.querySelector('#button')
 const input = document.querySelector('#input')
+const template = document.querySelector("template")
 
 function add() {
     undone.unshift(input.value)
@@ -19,52 +20,38 @@ input.addEventListener('keydown', function(event) {
 })
 
 function render() {
-    const wrapper = document.querySelector('#wrapper')
-    const undoneUl = createTodoListHTML(undone, 'undone', done)
-    const doneUl = createTodoListHTML(done, 'done', undone)
+    fillTodoList('undone', undone, done)
+    fillTodoList('done', done, undone)
 
-    wrapper.replaceChildren(undoneUl)
-    wrapper.appendChild(doneUl)
-
-    localStorage.setItem('done', JSON.stringify(done))
-    localStorage.setItem('undone', JSON.stringify(undone))
+    localStorage.done = JSON.stringify(done)
+    localStorage.undone = JSON.stringify(undone)
 }
 
-function createTodoListHTML(list, id, target) {
-    const ul = document.createElement('ul')
-    ul.id = id
-
-    const h = document.createElement('h2')
-    h.appendChild(document.createTextNode(id))
-    ul.appendChild(h)
+function fillTodoList(id, list, other) {
+    const ul = document.getElementById(id)
+    ul.replaceChildren()
 
     for (let i = 0; i < list.length; i++) {
-        const li = createTodoHTML(list, i, target)
+        const li = createTodoElement(i, list, other)
 
         ul.appendChild(li)
     }
-
-    return ul
 }
 
-function createTodoHTML(list, index, target) {
-    const li = document.createElement('li')
+function createTodoElement(index, list, other) {
+    const li = template.content.cloneNode(true)
         
-    const checkbox = document.createElement('input')
-    checkbox.type = 'checkbox'
+    const checkbox = li.querySelector('input')
     checkbox.addEventListener('change', function () {
         const removed = list.splice(index, 1)
-        target.unshift(removed)
+        other.unshift(removed)
 
         render()
     })
     
-    const span = document.createElement('span')
+    const span = li.querySelector('span')
     const todo = document.createTextNode(list[index])
     span.appendChild(todo)
-    
-    li.appendChild(checkbox)
-    li.appendChild(span)
 
     return li
 }
