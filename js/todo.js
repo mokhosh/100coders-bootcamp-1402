@@ -1,5 +1,5 @@
-const undone = JSON.parse(localStorage.undone) ?? []
-const done = JSON.parse(localStorage.done) ?? []
+const undone = JSON.parse(localStorage.getItem('undone')) ?? []
+const done = JSON.parse(localStorage.getItem('done')) ?? []
 
 const button = document.querySelector('#button')
 const input = document.querySelector('#input')
