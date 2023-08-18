@@ -57,10 +57,12 @@ li:hover {
 .form {
     display: flex;
     border-radius: 2rem;
+    transition: box-shadow 0.2s;
+    box-shadow: 0 0 0 0px var(--primary-transparent);
 }
 
 .form:has(input:focus) {
-    box-shadow: 0 0 0 5px var(--primary-transparent);
+    box-shadow: 0 0 0 8px var(--primary-transparent);
 }
 
 .form input {
