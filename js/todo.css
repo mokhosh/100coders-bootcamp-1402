@@ -11,6 +11,10 @@
     --text-color: hsl(var(--hue), var(--saturation), 30%);
 }
 
+::selection {
+    background-color: var(--primary-transparent);
+}
+
 body, input, button {
     color: var(--text-color);
     font-family: monospace;
