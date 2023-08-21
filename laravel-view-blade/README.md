@@ -2,4 +2,4 @@
 
 Files to look at
 - routes/web.php
-- resources/views/welcome.blade.php
+- all files in resources/views/
