@@ -11,6 +11,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// if the only thing you need to do in your closure is to return a view you can use the view method instead of get
+// this one line does the same thing as the previous three lines of code
+Route::view('/', 'welcome');
+
 // adding a new simple route that handles requests that come to /about
 Route::get('/about', function () {
     return 'This is a project that demostrates the use of routes in Laravel';
