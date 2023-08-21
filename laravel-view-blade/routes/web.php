@@ -19,3 +19,13 @@ Route::view('hi/{name}', 'hello');
 // you can nest your views in folers and use them with dot notation
 // this will look for a view called "first" in a folder called "group" inside rources/views
 Route::view('/nested', 'group.first');
+
+// you can pass a string that contains HTML to your views
+// it's up to you how to use that in your view
+// checkout html-entities.blade.php to see how we use this
+Route::get('html', function () {
+    $myHtmlString = '<h1>Salaam</h1>';
+
+    // you can access this variable in the view like $danger and not $myHtmlString
+    return view('html-entities', ['danger' => $myHtmlString]);
+});
