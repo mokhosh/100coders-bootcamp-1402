@@ -1,4 +1,11 @@
+{{-- this line is a blade comment, this is how you make comments in blade --}}
+{{-- this line will NOT be rendered in the final HTML --}}
+<!-- this line is an HTML comment and WILL be present in the final HTML -->
+{{-- if you have blade code or php errors on this line they will not be run --}}
+<!-- if you put blade on this line it will be run and if you have errors they will stop your code -->
 <!DOCTYPE html>
+{{-- you can output php variables and functions by using {{ ... }}  in your blade files --}}
+{{-- this like will put the output of str_replace on the final HTML --}}
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -17,18 +24,27 @@
     </head>
     <body class="antialiased">
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+            {{-- this is how you define conditions in blade --}}
+            {{-- everything from @if until @endif will only run and be output if the condition is true --}}
+            {{-- in this case if there is a route called 'login' --}}
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                    {{-- this is a custom blade "if" that is equivalent to "if your is logged in" --}}
                     @auth
                         <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
+                    {{-- you can have "else" just like javascript --}}
                     @else
                         <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
+                        {{-- you can have nested ifs (if inside another if) --}}
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                        {{-- this will end the closest if --}}
                         @endif
+                    {{-- this will close the next if (the @auth one in this case) --}}
                     @endauth
                 </div>
+            {{-- this will close the next if --}}
             @endif
 
             <div class="max-w-7xl mx-auto p-6 lg:p-8">
