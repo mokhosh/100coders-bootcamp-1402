@@ -12,3 +12,6 @@ Route::view('/new-blade', 'new');
 Route::get('/hello/{name}', function ($name) {
     return view('hello', ['name' => $name]);
 });
+
+// if you use the view syntax, all parameters will be passed to the view automatically
+Route::view('hi/{name}', 'hello');
