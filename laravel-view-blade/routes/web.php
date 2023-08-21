@@ -15,3 +15,7 @@ Route::get('/hello/{name}', function ($name) {
 
 // if you use the view syntax, all parameters will be passed to the view automatically
 Route::view('hi/{name}', 'hello');
+
+// you can nest your views in folers and use them with dot notation
+// this will look for a view called "first" in a folder called "group" inside rources/views
+Route::view('/nested', 'group.first');
