@@ -18,7 +18,16 @@ Route::get('/about', function () {
 
 // receving parameters in the route
 // the parameter is passed to the closure that handles the route
+// this will respond to /hello/ali for example
+// this will not respond to /hello/ and will throw a 404 error
 Route::get('/hello/{name}', function ($name) {
     // using double quotes (") to use variables inside strings
     return "Hello, {$name}!";
+});
+
+// making parameters optional
+// the function argument must also be optional by providing a default value
+// this will respond to both /bye/ali and /bye/
+Route::get('/bye/{name?}', function ($name = 'my friend') {
+    return "Bye, {$name}!";
 });
