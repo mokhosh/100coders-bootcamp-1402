@@ -1,6 +1,8 @@
 <?php
 
 // import the Laravel Route class that helps us define routes
+
+use App\Http\Controllers\GreetingController;
 use Illuminate\Support\Facades\Route;
 
 // simple route handling requests that come to / (root)
@@ -46,3 +48,14 @@ Route::view('/', 'welcome')->name('home');
 Route::get('hello/{name}', function ($name) {
     return "Hello, {$name}!";
 })->name('hello');
+
+// you can use artisan to make a controller with this command:
+    // php artisan make:controller GreetingController
+// you can use your controller to handle routes instead of closures to make your routes files (like web.php) cleaner
+// this will send all requests of /hello/{name} to the hello() method of GreetingController
+// make sure you import GreetingController by having this at the top of your file:
+    // use App\Http\Controllers\GreetingController;
+Route::get('hello/{name}', [GreetingController::class, 'hello']);
+
+// you can have multiple methods on the same controller and use them to group similar actions
+Route::get('bye/{name?}', [GreetingController::class, 'bye']);
