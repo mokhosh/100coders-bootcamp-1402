@@ -40,3 +40,9 @@ Route::get('/bye/{name?}', function ($name = 'my friend') {
 // by using named routes you make it possible to easily change the url of a route without breaking your app
 // you can get the url to this route by calling route('home') anywhere in your app
 Route::view('/', 'welcome')->name('home');
+
+// you can pass parameters when generating urls for named routes with this syntax:
+    // route('hello', ['name' => 'ali'])
+Route::get('hello/{name}', function ($name) {
+    return "Hello, {$name}!";
+})->name('hello');
