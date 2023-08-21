@@ -3,6 +3,7 @@
 // import the Laravel Route class that helps us define routes
 
 use App\Http\Controllers\GreetingController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 // simple route handling requests that come to / (root)
@@ -59,3 +60,8 @@ Route::get('hello/{name}', [GreetingController::class, 'hello']);
 
 // you can have multiple methods on the same controller and use them to group similar actions
 Route::get('bye/{name?}', [GreetingController::class, 'bye']);
+
+// if you only have one action on a controller you can make it invokable and pass the controller directly without specifying a method
+// if you want to use artisan to make invokable controllers add -i at the end
+    // php artisan make:controller HomeController -i
+Route::get('/', HomeController::class);
