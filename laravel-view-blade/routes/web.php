@@ -29,3 +29,6 @@ Route::get('html', function () {
     // you can access this variable in the view like $danger and not $myHtmlString
     return view('html-entities', ['danger' => $myHtmlString]);
 });
+
+// you can have conditions and loops in your blade files
+Route::view('blade', 'blade');
