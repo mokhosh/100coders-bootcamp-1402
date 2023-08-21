@@ -31,5 +31,16 @@
         @endforeach
     </ul>
     <div>Did you notice that names are Title Cased? I used the <code>ucfirst</code> php function for that.</div>
+
+    <div>You can also have nested for loops:</div>
+    <table>
+        @foreach([1,2,3,4,5,6,7,8,9,10] as $row)
+            <tr>
+                @foreach([1,2,3,4,5,6,7,8,9,10] as $col)
+                    <td>{{ $row * $col }}</td>
+                @endforeach
+            </tr>
+        @endforeach
+    </table>
 </body>
 </html>
