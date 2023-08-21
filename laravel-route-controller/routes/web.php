@@ -15,3 +15,10 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return 'This is a project that demostrates the use of routes in Laravel';
 });
+
+// receving parameters in the route
+// the parameter is passed to the closure that handles the route
+Route::get('/hello/{name}', function ($name) {
+    // using double quotes (") to use variables inside strings
+    return "Hello, {$name}!";
+});
