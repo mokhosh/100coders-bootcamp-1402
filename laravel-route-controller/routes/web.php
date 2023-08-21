@@ -10,3 +10,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// adding a new simple route that handles requests that come to /about
+Route::get('/about', function () {
+    return 'This is a project that demostrates the use of routes in Laravel';
+});
