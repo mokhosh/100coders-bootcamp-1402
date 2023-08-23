@@ -1,0 +1,3 @@
+<x-my.layout title="Contact Me">
+    This is how you can contact me...
+</x-my.layout>
