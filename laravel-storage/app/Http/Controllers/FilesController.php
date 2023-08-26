@@ -19,6 +19,17 @@ class FilesController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'filename' => 'required',
+            'note' => 'required',
+        ]);
+
+        if (Storage::fileExists($request->filename)) {
+            return redirect()->back()->withErrors([
+                'filename' => 'note already exists!',
+            ]);
+        }
+
         Storage::put($request->filename, $request->note);
 
         return redirect()->route('note.edit', $request->filename);
@@ -38,6 +49,16 @@ class FilesController extends Controller
 
     public function update(Request $request, $filename)
     {
+        $request->validate([
+            'note' => 'required',
+        ]);
+
+        if (! Storage::fileExists($filename)) {
+            return redirect()->back()->withErrors([
+                'filename' => 'note does not exist!',
+            ]);
+        }
+
         Storage::put($filename, $request->note);
 
         return redirect()->back();

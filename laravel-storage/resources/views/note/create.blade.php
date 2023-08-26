@@ -1,16 +1,24 @@
 <x-layout>
     <div class="mt-8">
+        @if($errors->any())
+            <ul class="p-4">
+                @foreach($errors->all() as $error)
+                    <li class="list-disc text-rose-700">{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+
         <form method="post" action="{{ route('note.store') }}">
             @csrf
 
             <div>
                 <label class="text-slate-500" for="filename">Note Name</label>
-                <input id="filename" class="mt-2 px-3 py-2 w-full text-xl text-slate-700 rounded border border-rose-200 focus:outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100" name="filename">
+                <input value="{{ old('filename') }}" id="filename" class="mt-2 px-3 py-2 w-full text-xl text-slate-700 rounded border border-rose-200 focus:outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100" name="filename">
             </div>
 
             <div class="mt-4">
                 <label class="text-slate-500" for="note">Note Content</label>
-                <textarea id="note" class="mt-2 px-3 py-2 w-full text-xl text-slate-700 rounded border border-rose-200 focus:outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100" rows="10" name="note"></textarea>
+                <textarea id="note" class="mt-2 px-3 py-2 w-full text-xl text-slate-700 rounded border border-rose-200 focus:outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100" rows="10" name="note">{{ old('note') }}</textarea>
             </div>
 
             <div class="flex">
