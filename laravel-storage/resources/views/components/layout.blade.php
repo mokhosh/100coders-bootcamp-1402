@@ -17,7 +17,9 @@
             @foreach($files as $file)
                 @continue(str_starts_with($file, '.'))
 
-                <li>{{ $file }}</li>
+                <li>
+                    <a href="{{ route('note.edit', $file) }}">{{ $file }}</a>
+                </li>
             @endforeach
         </ul>
     </aside>

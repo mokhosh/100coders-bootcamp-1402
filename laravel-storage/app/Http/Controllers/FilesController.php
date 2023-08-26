@@ -21,6 +21,25 @@ class FilesController extends Controller
     {
         Storage::put($request->filename, $request->note);
 
-        return redirect('/');
+        return redirect()->route('note.edit', $request->filename);
+    }
+
+    public function edit($filename)
+    {
+        $note = Storage::get($filename);
+        $updated = Storage::lastModified($filename);
+
+        return view('note.edit', [
+            'filename' => $filename,
+            'updated' => $updated,
+            'note' => $note,
+        ]);
+    }
+
+    public function update(Request $request, $filename)
+    {
+        Storage::put($filename, $request->note);
+
+        return redirect()->back();
     }
 }
