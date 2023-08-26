@@ -1,7 +1,14 @@
 <x-layout>
     <div class="mt-8">
-        <div class="my-8 font-semibold text-slate-500">
+        <div class="flex items-center justify-between my-8 font-semibold text-slate-500">
             <div>Last updated: {{ \Carbon\Carbon::createFromTimestamp($updated)->diffForHumans() }}</div>
+
+            <form method="post" action="{{ route('note.delete', $filename) }}">
+                @csrf
+                @method('delete')
+
+                <button class="mt-2 flex-1 rounded py-1 px-4 bg-amber-200 font-semibold hover:bg-amber-100 text-amber-700 transition-all">Delete Note</button>
+            </form>
         </div>
 
         <form method="post" action="{{ route('note.update', $filename) }}">

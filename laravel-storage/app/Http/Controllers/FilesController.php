@@ -42,4 +42,11 @@ class FilesController extends Controller
 
         return redirect()->back();
     }
+
+    public function delete($filename)
+    {
+        Storage::delete($filename);
+
+        return redirect('/');
+    }
 }
