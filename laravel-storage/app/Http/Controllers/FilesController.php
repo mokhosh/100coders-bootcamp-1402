@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -38,7 +39,8 @@ class FilesController extends Controller
     public function edit($filename)
     {
         $note = Storage::get($filename);
-        $updated = Storage::lastModified($filename);
+        $timestamp = Storage::lastModified($filename);
+        $updated = Carbon::createFromTimestamp($timestamp);
 
         return view('note.edit', [
             'filename' => $filename,

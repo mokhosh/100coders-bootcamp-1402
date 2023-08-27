@@ -9,7 +9,7 @@
         @endif
 
         <div class="flex items-center justify-between my-8 font-semibold text-slate-500">
-            <div>Last updated: {{ \Carbon\Carbon::createFromTimestamp($updated)->diffForHumans() }}</div>
+            <div>Last updated: {{ $updated->diffForHumans() }}</div>
 
             <form method="post" action="{{ route('note.delete', $filename) }}">
                 @csrf
