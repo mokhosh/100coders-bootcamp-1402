@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.category.index', [
+            'categories' => Category::get(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -28,7 +31,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:3|max:20',
+            'slug' => 'nullable|string|min:3|max:20|alpha_dash',
+        ]);
+
+        $request->user()->categories()->create([
+            'title' => $request->input('title'),
+            'slug' => $request->input('slug') ?? Str::slug($request->input('title')),
+        ]);
+
+        return to_route('category.index');
     }
 
     /**
@@ -44,7 +57,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -52,7 +67,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:3|max:20',
+            'slug' => 'required|string|min:3|max:20|alpha_dash',
+        ]);
+
+        $category->update([
+            'title' => $request->input('title'),
+            'slug' => $request->input('slug', Str::slug($request->input('title'))),
+        ]);
+
+        return to_route('category.index');
     }
 
     /**
@@ -60,6 +85,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return to_route('category.index');
     }
 }
