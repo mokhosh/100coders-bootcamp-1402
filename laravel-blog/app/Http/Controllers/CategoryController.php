@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('admin.category.index', [
-            'categories' => Category::get(),
+            'categories' => $request->user()->categories()->get(),
         ]);
     }
 
@@ -33,7 +34,10 @@ class CategoryController extends Controller
     {
         $request->validate([
             'title' => 'required|string|min:3|max:20',
-            'slug' => 'nullable|string|min:3|max:20|alpha_dash',
+            'slug' => [
+                'nullable', 'string', 'min:3', 'max:20', 'alpha_dash',
+                Rule::unique('categories')->where(fn ($query) => $query->where('user_id', $request->user()->id)),
+            ],
         ]);
 
         $request->user()->categories()->create([
@@ -69,12 +73,17 @@ class CategoryController extends Controller
     {
         $request->validate([
             'title' => 'required|string|min:3|max:20',
-            'slug' => 'required|string|min:3|max:20|alpha_dash',
+            'slug' => [
+                'nullable', 'string', 'min:3', 'max:20', 'alpha_dash',
+                Rule::unique('categories')
+                    ->where(fn ($query) => $query->where('user_id', $request->user()->id))
+                    ->ignore($category->id),
+            ],
         ]);
 
         $category->update([
             'title' => $request->input('title'),
-            'slug' => $request->input('slug', Str::slug($request->input('title'))),
+            'slug' => $request->input('slug') ?? Str::slug($request->input('title')),
         ]);
 
         return to_route('category.index');
