@@ -38,7 +38,8 @@ class ProfileController extends Controller
                 Storage::disk('public')->delete($request->user()->image);
             }
 
-            $request->user()->image = $request->file('image')->store('image', 'public');
+            $filename = $request->user()->username . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->user()->image = $request->file('image')->storeAs('image', $filename, 'public');
         }
 
         $request->user()->save();

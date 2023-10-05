@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -52,7 +53,7 @@ class User extends Authenticatable
     public function imageUrl(): Attribute
     {
         return Attribute::make(
-            get: fn() => url('storage/' . $this->image),
+            get: fn() => Storage::disk('public')->url($this->image),
         );
     }
 }
