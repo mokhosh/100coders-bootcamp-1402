@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->hasMany(Category::class);
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'author_id');
+    }
+
     public function imageUrl(): Attribute
     {
         return Attribute::make(
