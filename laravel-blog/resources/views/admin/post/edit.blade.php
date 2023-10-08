@@ -55,6 +55,12 @@
                         </div>
 
                         <div>
+                            <x-input-label for="tags" :value="__('Tags')" />
+                            <x-text-input id="tags" name="tags" type="text" class="mt-1 block w-full" :value="old('tags', $post->tags_string)" />
+                            <x-input-error class="mt-2" :messages="$errors->get('tags')" />
+                        </div>
+
+                        <div>
                             <x-checkbox id="is_draft" name="is_draft" :label="__('Is Draft')" :checked="old('is_draft', $post->is_draft)"/>
                             <x-input-error class="mt-2" :messages="$errors->get('is_draft')" />
                         </div>

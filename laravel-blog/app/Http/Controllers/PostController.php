@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -48,9 +49,10 @@ class PostController extends Controller
                 Rule::exists('categories', 'id')->where(fn ($query) => $query->where('user_id', $request->user()->id)),
             ],
             'published_at' => 'nullable|date',
+            'tags' => 'nullable|string',
         ]);
 
-        $request->user()->posts()->create([
+        $post = $request->user()->posts()->create([
             'title' => $request->input('title'),
             'slug' => $request->input('slug') ?? Str::slug($request->input('title')),
             'body' => $request->input('body'),
@@ -59,6 +61,8 @@ class PostController extends Controller
             'is_draft' => $request->boolean('is_draft') ?? false,
             'image' => $request->file('image')->store('post-image', 'public'),
         ]);
+
+        $post->tags()->attach(Tag::findOrCreateFromRequest($request));
 
         return to_route('post.index');
     }
@@ -102,6 +106,7 @@ class PostController extends Controller
                 Rule::exists('categories', 'id')->where(fn ($query) => $query->where('user_id', $request->user()->id)),
             ],
             'published_at' => 'nullable|date',
+            'tags' => 'nullable|string',
         ]);
 
         if ($request->hasFile('image')) {
@@ -120,6 +125,8 @@ class PostController extends Controller
         ]);
 
         $post->save();
+
+        $post->tags()->sync(Tag::findOrCreateFromRequest($request));
 
         return to_route('post.index');
     }

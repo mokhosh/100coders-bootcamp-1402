@@ -26,10 +26,22 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function imageUrl(): Attribute
     {
         return Attribute::make(
             get: fn() => Storage::disk('public')->url($this->image),
+        );
+    }
+
+    public function tagsString(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => implode(', ', $this->tags()->pluck('name')->toArray()),
         );
     }
 }
