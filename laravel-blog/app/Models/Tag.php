@@ -20,16 +20,17 @@ class Tag extends Model
 
     public static function findOrCreateFromRequest(Request $request)
     {
-        $tags = $request->input('tags');
-        $tags = explode(',', $tags);
-        return collect($tags)->map(function ($item) {
-            return trim($item);
-        })->map(function ($item) {
-            return Tag::firstOrCreate([
-                'name' => $item,
-            ], [
-                'slug' => Str::slug($item),
-            ])->id;
-        });
+        $tags = explode(',', $request->input('tags'));
+
+        return collect($tags)
+            ->map(function ($item) {
+                return trim($item);
+            })->map(function ($item) {
+                return Tag::firstOrCreate([
+                    'name' => $item,
+                ], [
+                    'slug' => Str::slug($item),
+                ])->id;
+            });
     }
 }
