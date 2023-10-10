@@ -7,6 +7,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
+Route::domain('{user:username}.laravel-blog.test')->group(function () {
+    Route::get('/', [BlogController::class, 'index']);
+});
+
 Route::get('/', [SiteController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
