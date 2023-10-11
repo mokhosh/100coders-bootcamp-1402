@@ -1,6 +1,6 @@
 <x-blog-layout>
     {{-- todo header --}}
-    <div class="mt-32 p-16 container max-w-screen-xl mx-auto space-y-48">
+    <div class="mt-32 p-16 pb-48 container max-w-screen-xl mx-auto space-y-48">
         @foreach($posts as $post)
             <div class="flex gap-16">
                 <div class="flex-1">
