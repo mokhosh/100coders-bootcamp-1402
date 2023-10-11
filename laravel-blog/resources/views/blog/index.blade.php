@@ -1,11 +1,11 @@
 <x-blog-layout>
     {{-- todo header --}}
-    <div class="mt-32 p-16 container mx-auto space-y-32">
+    <div class="mt-32 p-16 container max-w-screen-xl mx-auto space-y-48">
         @foreach($posts as $post)
-            <div class="flex gap-32">
+            <div class="flex gap-16">
                 <div class="flex-1">
                     <div class="text-lg text-gray-400 font-semibold">{{ $post->created_at->diffForHumans() }}</div>
-                    <div class="font-bold text-5xl">{{ $post->title }}</div>
+                    <div class="font-title font-bold text-5xl">{{ $post->title }}</div>
                     <div class="mt-4 px-3 py-0.5 text-sm rounded-md inline-flex bg-orange-100 text-orange-400 font-semibold">{{ $post->category->title }}</div>
                     @foreach($post->tags as $tag)
                         <div class="mt-4 px-3 py-0.5 text-sm rounded-md inline-flex bg-sky-100 text-sky-400 font-semibold">{{ $tag->name }}</div>

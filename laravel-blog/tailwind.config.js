@@ -12,7 +12,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: [...defaultTheme.fontFamily.sans],
+                sans: ['Work Sans', ...defaultTheme.fontFamily.sans],
+                title: ['DM Serif Display'],
             },
         },
     },

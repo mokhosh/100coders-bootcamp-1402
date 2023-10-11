@@ -6,10 +6,14 @@
 
     <title>{{ config('app.name') }}</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@200;400;600;700&display=swap" rel="stylesheet">
+
     @vite(['resources/css/app.css', 'resource/js/app.js'])
 </head>
 
-<body class="antialiased bg-orange-50">
+<body class="antialiased">
     @if (Route::has('login'))
         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
             @auth
@@ -26,8 +30,8 @@
 
     {{ $slot }}
 
-    <div class="mt-48 bg-orange-700 text-orange-200 p-8">
-        <div class="container mx-auto text-center">
+    <div class="bg-orange-300 text-orange-900 p-8">
+        <div class="p-16 container max-w-screen-xl mx-auto text-center">
             {{ $footer }}
         </div>
     </div>
