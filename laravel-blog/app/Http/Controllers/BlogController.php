@@ -13,6 +13,7 @@ class BlogController extends Controller
         $categories = $user->categories;
 
         return view('blog.index', [
+            'blog' => $user,
             'categories' => $categories,
             'posts' => $posts,
         ]);
