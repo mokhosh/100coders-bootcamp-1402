@@ -7,9 +7,9 @@
     <div class="flex-1">
         <div class="text-lg text-gray-400 font-semibold">{{ $post->created_at->diffForHumans() }}</div>
         <div class="font-title font-bold text-5xl">{{ $post->title }}</div>
-        <div class="mt-4 px-3 py-0.5 text-sm rounded-md inline-flex bg-primary-100 text-primary-400 font-semibold">{{ $post->category->title }}</div>
+        <x-widgets.category-item :category="$post->category"/>
         @foreach($post->tags as $tag)
-            <div class="mt-4 px-3 py-0.5 text-sm rounded-md inline-flex bg-sky-100 text-sky-400 font-semibold">#{{ $tag->name }}</div>
+            <x-widgets.tag-item :$tag/>
         @endforeach
         <div class="mt-4 text-xl text-gray-500">{!! str($post->body)->words(50, '...') !!}</div>
 
