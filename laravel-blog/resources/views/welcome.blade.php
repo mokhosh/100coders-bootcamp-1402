@@ -1,15 +1,15 @@
 <x-blog-layout>
-    <div class="bg-orange-50 pb-48">
+    <div class="bg-primary-50 pb-48">
 
         {{--  Hero Section  --}}
-        <div class="bg-orange-100">
+        <div class="bg-primary-100">
             <div class="flex justify-around container mx-auto">
                 <div class="flex flex-col justify-center p-16">
-                    <div class="font-title text-7xl text-lime-700">Join Larablog!</div>
-                    <div class="mt-4 text-2xl text-lime-600">Start writing with {{ $blogCount }} {{ Str::plural('blog', $blogCount) }} on Larablog today.</div>
+                    <div class="font-title text-7xl text-accent-600">Join Larablog!</div>
+                    <div class="mt-4 text-2xl text-secondary-600">Start writing with {{ $blogCount }} {{ Str::plural('blog', $blogCount) }} on Larablog today.</div>
 
                     <div class="mt-20">
-                        <a href="{{ route('register') }}" class="px-10 py-5 text-2xl font-semibold rounded-xl bg-lime-400 text-lime-800 hover:bg-lime-500 hover:text-lime-900">Create My Blog</a>
+                        <a href="{{ route('register') }}" class="px-10 py-5 text-2xl font-semibold rounded-xl bg-brown-300 text-brown-800 hover:bg-brown-400 hover:text-brown-900">Create My Blog</a>
                     </div>
                 </div>
 

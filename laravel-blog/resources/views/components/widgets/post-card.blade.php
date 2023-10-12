@@ -4,7 +4,7 @@
     <img src="{{ $post->image_url }}" alt="{{ $post->title }}" class="h-64 w-full object-cover">
 
     <div class="p-6 bg-white">
-        <div class="px-3 py-1 rounded-md inline-flex bg-orange-100 text-orange-400 font-semibold">
+        <div class="px-3 py-1 rounded-md inline-flex bg-primary-100 text-primary-400 font-semibold">
             {{ $post->author->title }}
         </div>
 
