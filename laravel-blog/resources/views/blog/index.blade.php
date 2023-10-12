@@ -14,7 +14,7 @@
 
     <div class="mt-32 p-16 pb-48 container max-w-screen-xl mx-auto space-y-48">
         @foreach($posts as $post)
-            <x-widgets.post-item :$post/>
+            <x-widgets.post-item :$blog :$post/>
         @endforeach
 
         {{ $posts->links() }}

@@ -1,6 +1,6 @@
 @props(['blog'])
 
-<a href="#" class="flex-1 rounded-3xl shadow-2xl overflow-hidden">
+<a href="{{ route('blog.index', ['user' => $blog]) }}" class="flex-1 rounded-3xl shadow-2xl overflow-hidden">
     <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}" class="h-64 w-full object-cover">
 
     <div class="p-6 bg-white">
