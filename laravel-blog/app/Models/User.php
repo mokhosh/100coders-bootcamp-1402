@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'author_id');
     }
 
+    public function subscribers()
+    {
+        return $this->hasMany(Subscriber::class);
+    }
+
     public function imageUrl(): Attribute
     {
         return Attribute::make(

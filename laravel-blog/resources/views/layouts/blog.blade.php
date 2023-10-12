@@ -32,6 +32,7 @@
 
     <div class="bg-primary-300 text-primary-900 p-8">
         <div class="p-16 container max-w-screen-xl mx-auto text-center">
+            <a id="footer"></a>
             {{ $footer }}
         </div>
     </div>
