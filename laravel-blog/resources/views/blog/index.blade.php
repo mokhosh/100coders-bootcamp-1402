@@ -14,7 +14,7 @@
 
     <div class="mt-32 p-16 pb-48 container max-w-screen-xl mx-auto space-y-48">
         @foreach($posts as $post)
-            <x-widgets.blog-item :$post/>
+            <x-widgets.post-item :$post/>
         @endforeach
 
         {{ $posts->links() }}
@@ -47,7 +47,7 @@
 
         <div class="mt-24 grid grid-cols-3 gap-16">
             <div class="text-left">
-                <h3 class="text-xl font-semibold">About</h3>
+                <h3 class="text-xl font-semibold">About {{ $blog->title }}</h3>
 
                 <div>{{ $blog->about }}</div>
             </div>
@@ -58,6 +58,16 @@
                 @foreach($categories as $category)
                     <a href="#" class="text-primary-700 hover:text-primary-900">{{ $category->title }}</a>
                 @endforeach
+            </div>
+
+            <div class="flex flex-col items-start gap-1 text-left">
+                <h3 class="text-xl font-semibold">Tags</h3>
+
+                <div>
+                    @foreach($tags as $tag)
+                        <a href="#" class="bg-primary-200 px-2 py-0.5 rounded text-xs text-primary-500 hover:text-primary-700">#{{ $tag->name }}</a>
+                    @endforeach
+                </div>
             </div>
         </div>
     </x-slot>

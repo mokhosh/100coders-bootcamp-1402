@@ -11,7 +11,7 @@ class StorePostRequest extends FormRequest
     public function rules(Request $request): array
     {
         return [
-            'title' => 'required|string|min:3|max:20',
+            'title' => 'required|string|min:3|max:40',
             'slug' => [
                 'nullable', 'string', 'min:3', 'max:20', 'alpha_dash',
                 Rule::unique('posts')->where(fn ($query) => $query->where('author_id', $request->user()->id)),

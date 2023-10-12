@@ -18,6 +18,11 @@ class Tag extends Model
         'slug',
     ];
 
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
+
     public static function findOrCreateFromRequest(Request $request)
     {
         $tags = explode(',', $request->input('tags'));
