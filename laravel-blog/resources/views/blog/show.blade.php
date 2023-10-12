@@ -18,9 +18,31 @@
         </div>
     </div>
 
-    <div class="mt-32 prose prose-2xl p-16 pb-48 container max-w-screen-xl mx-auto">
+    <div class="mt-32 prose prose-2xl p-16 container max-w-screen-xl mx-auto">
         {!! nl2br($post->body) !!}
     </div>
+
+    {{-- comment section --}}
+    <div class="container p-16 pb-48 max-w-screen-md mx-auto">
+        <h3 class="text-xl font-semibold text-secondary-600">Comments</h3>
+
+        <form action="{{ route('comment.store', ['user' => $blog, 'post' => $post]) }}" method="post">
+            @csrf
+
+            <div class="mt-4">
+                <x-text-input id="email" name="email" type="email" placeholder="Email" class="block w-full" :value="old('email')" required />
+                <x-input-error class="mt-2" :messages="$errors->get('email')" />
+            </div>
+
+            <div class="mt-4">
+                <x-text-area id="body" name="body" type="text" placeholder="Comment" class="block w-full">{{ old('body') }}</x-text-area>
+                <x-input-error class="mt-2" :messages="$errors->get('body')" />
+            </div>
+
+            <x-primary-button class="mt-4">Submit</x-primary-button>
+        </form>
+    </div>
+    {{-- end comment section --}}
 
     <x-slot name="footer">
         <div class="flex justify-between items-center bg-primary-100 p-16 rounded-3xl">
