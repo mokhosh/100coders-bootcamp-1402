@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="mt-32 prose prose-2xl p-16 container max-w-screen-xl mx-auto">
+    <div class="mt-32 prose prose-2xl p-16 container max-w-screen-lg mx-auto">
         {!! nl2br($post->body) !!}
     </div>
 
