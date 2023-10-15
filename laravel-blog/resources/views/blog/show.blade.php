@@ -5,9 +5,9 @@
                 <div class="font-title text-6xl text-primary-900">{{ $post->title }}</div>
                 <div class="text-xl text-primary-500">{{ $post->created_at->diffForHumans() }} by {{ $post->author->name }}</div>
                 <div>
-                    <x-widgets.category-item :category="$post->category"/>
+                    <x-widgets.category-item :$blog :category="$post->category"/>
                     @foreach($post->tags as $tag)
-                        <x-widgets.tag-item :$tag/>
+                        <x-widgets.tag-item :$blog :$tag/>
                     @endforeach
                 </div>
             </div>

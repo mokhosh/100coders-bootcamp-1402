@@ -56,7 +56,7 @@
 
                     <div>
                         @foreach($tags as $tag)
-                            <a href="#" class="bg-primary-200 px-2 py-0.5 rounded text-xs text-primary-500 hover:text-primary-700">#{{ $tag->name }}</a>
+                            <a href="{{ route('blog.tag', ['user' => $blog, 'tag' =>$tag]) }}" class="bg-primary-200 px-2 py-0.5 rounded text-xs text-primary-500 hover:text-primary-700">#{{ $tag->name }}</a>
                         @endforeach
                     </div>
                 </div>

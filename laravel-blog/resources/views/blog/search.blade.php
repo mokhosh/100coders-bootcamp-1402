@@ -3,7 +3,7 @@
         <div class="flex container mx-auto justify-around items-center">
             <div>
                 <div class="font-title text-6xl text-primary-900">{{ $blog->title }}</div>
-                <div class="text-xl text-primary-500">{{ $blog->subtitle }}</div>
+                <div class="text-xl text-primary-500">Results for: {{ $query }}</div>
 
                 <form class="flex items-center gap-2 mt-4" action="{{ route('blog.search', $blog) }}">
                     <x-text-input type="text" name="q" required class="text-sm"/>

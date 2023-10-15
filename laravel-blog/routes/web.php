@@ -13,6 +13,8 @@ Route::domain('{user:username}.' . config('app.url'))->group(function () {
     Route::post('/subscriber', [SubscriberController::class, 'store'])->name('subscriber.store');
     Route::post('post/{post}/comment', [CommentController::class, 'store'])->name('comment.store');
     Route::get('category/{category:slug}', [BlogController::class, 'category'])->name('blog.category');
+    Route::get('tag/{tag:slug}', [BlogController::class, 'tag'])->withoutScopedBindings()->name('blog.tag');
+    Route::get('search', [BlogController::class, 'search'])->name('blog.search');
 });
 
 Route::get('/', [SiteController::class, 'index'])->name('home');

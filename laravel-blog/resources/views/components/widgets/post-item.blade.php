@@ -7,9 +7,9 @@
     <div class="flex-1">
         <div class="text-lg text-gray-400 font-semibold">{{ $post->created_at->diffForHumans() }}</div>
         <div class="font-title font-bold text-5xl">{{ $post->title }}</div>
-        <x-widgets.category-item :category="$post->category"/>
+        <x-widgets.category-item :blog="$blog" :category="$post->category"/>
         @foreach($post->tags as $tag)
-            <x-widgets.tag-item :$tag/>
+            <x-widgets.tag-item :$blog :$tag/>
         @endforeach
         <div class="mt-4 text-xl text-gray-500">{!! str($post->body)->words(50, '...') !!}</div>
 
