@@ -17,6 +17,7 @@ class PostController extends Controller
 
         return view('blog.show', [
             'categories' => $user->categories,
+            'comments' => $post->comments,
             'blog' => $user,
             'post' => $post,
             'tags' => $tags,

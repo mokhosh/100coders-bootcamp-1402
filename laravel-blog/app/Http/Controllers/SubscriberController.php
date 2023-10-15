@@ -23,14 +23,14 @@ class SubscriberController extends Controller
 
         if ($validator->fails()) {
             return back()
-                ->withErrors($validator)
+                ->withErrors($validator, 'subscribe')
                 ->withFragment('footer');
         }
 
         $user->subscribers()->create($validator->validated());
 
         return back()
-            ->with('status', 'Thanks for subscribing!')
+            ->with('subscribed', 'Thanks for subscribing!')
             ->withFragment('footer');
     }
 }
