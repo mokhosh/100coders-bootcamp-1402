@@ -6,62 +6,43 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('admin.comment.index', [
+            'comments' => $request->user()->comments()->withoutGlobalScope('moderated')->paginate(),
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCommentRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Comment $comment)
     {
-        //
+        return view('admin.comment.edit', [
+            'comment' => $comment,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
-        //
+        $comment->update($request->validated());
+
+        return to_route('comment.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    public function moderate(Request $request, Comment $comment)
+    {
+        $comment->moderated_at = $comment->moderated_at ? null : now();
+        $comment->save();
+
+        return to_route('comment.index');
+    }
+
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return to_route('comment.index');
     }
 }

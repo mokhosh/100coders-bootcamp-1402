@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Comment;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::domain(config('app.url'))
                 ->middleware(['web', 'auth'])
                 ->group(base_path('routes/admin.php'));
+
+            Route::bind('comment', function (string $value) {
+                return Comment::withoutGlobalScopes()->findOrFail($value);
+            });
         });
     }
 }

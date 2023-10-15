@@ -44,7 +44,7 @@
         </form>
 
         @if (session()->has('comment-created'))
-            <p class="text-3xl tracking-tight font-semibold text-primary-700">Thanks for commenting!</p>
+            <p class="mt-8 text-3xl tracking-tight font-semibold text-primary-700">Thanks for commenting!</p>
             <p class="mt-4 text-primary-600">Your comment awaits moderation!</p>
         @endif
 

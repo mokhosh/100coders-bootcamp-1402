@@ -12,10 +12,16 @@ class Comment extends Model
     protected $fillable = [
         'email',
         'body',
+        'moderated_at',
+    ];
+
+    protected $casts = [
+        'moderated_at' => 'datetime',
     ];
 
     public static function booted()
     {
         static::addGlobalScope('moderated', fn ($q) => $q->whereNotNull('moderated_at'));
+        static::addGlobalScope('latest', fn ($q) => $q->latest());
     }
 }
