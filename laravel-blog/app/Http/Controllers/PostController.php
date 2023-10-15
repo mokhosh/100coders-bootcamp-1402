@@ -11,16 +11,10 @@ class PostController extends Controller
 {
     public function show(User $user, Post $post)
     {
-        $tags = Tag::whereHas('posts', function ($query) use ($user) {
-            $query->where('author_id', $user->id);
-        })->get();
-
         return view('blog.show', [
-            'categories' => $user->categories,
             'comments' => $post->comments,
             'blog' => $user,
             'post' => $post,
-            'tags' => $tags,
         ]);
     }
 }

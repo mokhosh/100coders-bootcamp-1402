@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="vieLayoutwport" content="width=device-width, initial-scale=1">
 
     <title>{{ config('app.name') }}</title>
 
@@ -33,34 +33,7 @@
     <div class="bg-primary-300 text-primary-900 p-8">
         <div class="p-16 container max-w-screen-xl mx-auto text-center">
             <a id="footer"></a>
-
-            <x-widgets.subscribe :$blog />
-
-            <div class="mt-24 grid grid-cols-3 gap-16">
-                <div class="text-left">
-                    <h3 class="text-xl font-semibold">About {{ $blog->title }}</h3>
-
-                    <div>{{ $blog->about }}</div>
-                </div>
-
-                <div class="flex flex-col items-start gap-1">
-                    <h3 class="text-xl font-semibold">Categories</h3>
-
-                    @foreach($categories as $category)
-                        <a href="{{ route('blog.category', ['user' => $blog, 'category' =>$category]) }}" class="text-primary-700 hover:text-primary-900">{{ $category->title }}</a>
-                    @endforeach
-                </div>
-
-                <div class="flex flex-col items-start gap-1 text-left">
-                    <h3 class="text-xl font-semibold">Tags</h3>
-
-                    <div>
-                        @foreach($tags as $tag)
-                            <a href="#" class="bg-primary-200 px-2 py-0.5 rounded text-xs text-primary-500 hover:text-primary-700">#{{ $tag->name }}</a>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+            {{ $footer }}
         </div>
     </div>
 </body>

@@ -1,4 +1,4 @@
-<x-blog-layout>
+<x-blog-layout :$blog>
     <div class="bg-primary-200">
         <div class="flex container mx-auto justify-around items-center">
             <div>
@@ -62,34 +62,4 @@
         </div>
     </div>
     {{-- end comment section --}}
-
-    <x-slot name="footer">
-        <x-widgets.subscribe :$blog />
-
-        <div class="mt-24 grid grid-cols-3 gap-16">
-            <div class="text-left">
-                <h3 class="text-xl font-semibold">About {{ $blog->title }}</h3>
-
-                <div>{{ $blog->about }}</div>
-            </div>
-
-            <div class="flex flex-col items-start gap-1">
-                <h3 class="text-xl font-semibold">Categories</h3>
-
-                @foreach($categories as $category)
-                    <a href="#" class="text-primary-700 hover:text-primary-900">{{ $category->title }}</a>
-                @endforeach
-            </div>
-
-            <div class="flex flex-col items-start gap-1 text-left">
-                <h3 class="text-xl font-semibold">Tags</h3>
-
-                <div>
-                    @foreach($tags as $tag)
-                        <a href="#" class="bg-primary-200 px-2 py-0.5 rounded text-xs text-primary-500 hover:text-primary-700">#{{ $tag->name }}</a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </x-slot>
 </x-blog-layout>

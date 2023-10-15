@@ -1,4 +1,4 @@
-<x-blog-layout>
+<x-site-layout>
     <div class="bg-primary-50 pb-48">
 
         {{--  Hero Section  --}}
@@ -54,4 +54,4 @@
     <x-slot name="footer">
         All Rights Reserved &copy; {{ now()->year }}
     </x-slot>
-</x-blog-layout>
+</x-site-layout>

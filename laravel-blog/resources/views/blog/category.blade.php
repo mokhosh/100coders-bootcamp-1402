@@ -3,7 +3,7 @@
         <div class="flex container mx-auto justify-around items-center">
             <div>
                 <div class="font-title text-6xl text-primary-900">{{ $blog->title }}</div>
-                <div class="text-xl text-primary-500">{{ $blog->subtitle }}</div>
+                <div class="text-xl text-primary-500">Category: {{ $category->title }}</div>
             </div>
 
             <div class="h-96">
