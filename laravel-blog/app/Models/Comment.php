@@ -24,4 +24,9 @@ class Comment extends Model
         static::addGlobalScope('moderated', fn ($q) => $q->whereNotNull('moderated_at'));
         static::addGlobalScope('latest', fn ($q) => $q->latest());
     }
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }
