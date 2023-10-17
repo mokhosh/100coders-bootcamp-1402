@@ -11,6 +11,8 @@ class PostController extends Controller
 {
     public function show(User $user, Post $post)
     {
+        $post->increment('views');
+
         return view('blog.show', [
             'comments' => $post->comments,
             'blog' => $user,
