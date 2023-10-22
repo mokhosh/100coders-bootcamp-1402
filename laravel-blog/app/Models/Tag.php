@@ -25,6 +25,10 @@ class Tag extends Model
 
     public static function findOrCreateFromRequest(Request $request)
     {
+        if (strlen($request->input('tags')) < 3) {
+            return [];
+        }
+
         $tags = explode(',', $request->input('tags'));
 
         return collect($tags)

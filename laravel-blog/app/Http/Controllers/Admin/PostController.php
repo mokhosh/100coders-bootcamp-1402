@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\NewPost;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -45,6 +46,8 @@ class PostController extends Controller
         ]);
 
         $post->tags()->attach(Tag::findOrCreateFromRequest($request));
+
+        NewPost::dispatch($post);
 
         return to_route('post.index');
     }
