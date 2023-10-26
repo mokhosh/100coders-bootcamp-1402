@@ -48,6 +48,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('put-session', function () {
+    session()->put('test', 'salaam');
+
+    return 'value has been put into the session';
+});
+
+Route::get('get-session', function () {
+    return session()->get('test');
+});
+
+Route::get('put-cache', function () {
+    cache()->set('test', 'salaam');
+
+    return 'value has been put into the cache';
+});
+
+Route::get('get-cache', function () {
+    return cache()->get('test');
+});
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/dashboard', [DashboardController::class, 'upload'])->name('dashboard.upload');
