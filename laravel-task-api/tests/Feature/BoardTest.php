@@ -23,7 +23,7 @@ class BoardTest extends TestCase
             'details' => 'Something about my board.',
         ]);
 
-        $response->assertOk();
+        $response->assertCreated();
         $this->assertDatabaseHas('boards', [
             'title' => 'My Board',
             'details' => 'Something about my board.',
@@ -52,7 +52,7 @@ class BoardTest extends TestCase
             'title' => 'My Board',
         ]);
 
-        $response->assertOk();
+        $response->assertCreated();
         $this->assertDatabaseHas('boards', [
             'title' => 'My Board',
         ]);

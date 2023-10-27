@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class BoardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //
@@ -22,12 +19,9 @@ class BoardController extends Controller
             'details' => 'nullable',
         ]);
 
-        $request->user()->boards()->create($validated);
+        return $request->user()->boards()->create($validated);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Board $board)
     {
         return $board;
