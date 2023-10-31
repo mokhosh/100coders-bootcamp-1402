@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "0f3d9969-6307-4617-a3b4-170618daf8f2",
+		"name": "sanctum stateful",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5988565"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "{{xsrf-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://laravel-sanctum-stateful.test/register?email=ali@gmail.com&password=1234567890&name=Ali&password_confirmation=1234567890",
+					"protocol": "http",
+					"host": [
+						"laravel-sanctum-stateful",
+						"test"
+					],
+					"path": [
+						"register"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "ali@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "1234567890"
+						},
+						{
+							"key": "name",
+							"value": "Ali"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "1234567890"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "{{xsrf-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://laravel-sanctum-stateful.test/login?email=ali@gmail.com&password=1234567890",
+					"protocol": "http",
+					"host": [
+						"laravel-sanctum-stateful",
+						"test"
+					],
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "ali@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "1234567890"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "{{xsrf-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://laravel-sanctum-stateful.test/login?email=ali@gmail.com&password=1234567890",
+					"protocol": "http",
+					"host": [
+						"laravel-sanctum-stateful",
+						"test"
+					],
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "ali@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "1234567890"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "{{xsrf-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://laravel-sanctum-stateful.test/api/user",
+					"protocol": "http",
+					"host": [
+						"laravel-sanctum-stateful",
+						"test"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.sendRequest({",
+					"    url: 'http://laravel-sanctum-stateful.test/sanctum/csrf-cookie',",
+					"    method: 'GET'",
+					"}, function (error, response, { cookies }) {",
+					"    if (! error) {",
+					"        pm.environment.set('xsrf-token', cookies.get('XSRF-TOKEN'))",
+					"    }",
+					"})"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
