@@ -10,6 +10,8 @@ class Article extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function scopeSearch(Builder $query, string $q)
     {
         return $query

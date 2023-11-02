@@ -12,6 +12,8 @@ Route::get('search', function (Request $request) {
     return Article::search($request->query('q'))->get();
 });
 
+Route::view('article', 'article')->middleware('auth');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
