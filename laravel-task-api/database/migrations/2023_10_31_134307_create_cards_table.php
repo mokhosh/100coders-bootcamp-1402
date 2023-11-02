@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('board_id')->constrained();
+            $table->unsignedInteger('order_column');
             $table->timestamps();
         });
     }
