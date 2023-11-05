@@ -11,7 +11,8 @@
         "laravel/jetstream": "^4.0",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "livewire/livewire": "^3.0"
+        "livewire/livewire": "^3.0",
+        "shetabit/payment": "^5.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

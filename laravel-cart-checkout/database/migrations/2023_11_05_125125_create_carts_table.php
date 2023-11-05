@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
+            $table->text('gateway_ref')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('address_id')->nullable();
             $table->foreignId('voucher_id')->nullable();

@@ -17,7 +17,7 @@ return new class extends Migration
         });
 
         Schema::create('order_product', function (Blueprint $table) {
-            $table->foreignId('cart_id');
+            $table->foreignId('order_id');
             $table->foreignId('product_id');
             $table->unsignedInteger('count');
             $table->unsignedInteger('price');

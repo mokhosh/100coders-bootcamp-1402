@@ -33,7 +33,7 @@
                         <h3 class="text-xl font-semibold">{{ $product->title }}</h3>
                         <div>{{ $product->price }}</div>
 
-                        <button x-on:click="$dispatch('add-to-cart', [{{ $product->id }}])" class="mt-2 bg-green-300 hover:bg-green-200 p-2">Add to cart</button>
+                        <button x-on:click="$dispatch('add-to-cart', [{{ $product->id }}])" class="mt-2 bg-green-300 hover:bg-green-200 p-2 rounded">Add to cart</button>
                     </div>
                 @endforeach
             </div>
