@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (Request $request) {
-    $posts = Post::search($request->query('q'))->get();
+    Debugbar::disable();
+    $post = Post::first();
 
     return view('welcome', [
-        'posts' => $posts,
+        'post' => $post,
     ]);
 });

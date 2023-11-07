@@ -7,12 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
-        <input type="text" name="q">
-        <button>Search</button>
-    </form>
-    @foreach ($posts as $post)
-        <div>{{ $post->title }} by {{ $post->user->name }}</div>
-    @endforeach
+    {{ $post->getFirstMedia() }}
 </body>
 </html>
