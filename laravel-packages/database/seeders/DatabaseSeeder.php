@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,5 +17,8 @@ class DatabaseSeeder extends Seeder
          foreach (User::all() as $user) {
              Post::factory(10)->for($user)->create();
          }
+
+         Role::create(['name' => 'admin']);
+         Role::create(['name' => 'writer']);
     }
 }
