@@ -6,6 +6,7 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    \Illuminate\Support\Facades\Auth::login(User::first());
     Debugbar::startMeasure('render','DB Access');
     $posts = Post::get();
     $posts->map(function ($post) {
